@@ -31,10 +31,10 @@ app.run(function($rootScope, $location, Authentication) {
   $rootScope.$on('$routeChangeStart', function(event, next, current) {
     if (!Authentication.isAuthorized(next.permission)) {
       if (!Authentication.isLoggedIn()) {
-        $location.path('/');
+        $location.path('/login');
       }
       else {
-        $location.path('/login');
+        $location.path('/');
       }
     }
   });
