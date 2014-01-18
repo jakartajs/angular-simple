@@ -17,6 +17,10 @@ app.config(function($routeProvider, $locationProvider) {
       templateUrl: 'views/product.html',
       controller: 'ProductCtrl'
     })
+    .when('/login', {
+      templateUrl: 'views/login.html',
+      controller: 'LoginCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });
@@ -27,10 +31,10 @@ app.run(function($rootScope, $location, Authentication) {
   $rootScope.$on('$routeChangeStart', function(event, next, current) {
     if (!Authentication.isAuthorized(next.permission)) {
       if (!Authentication.isLoggedIn()) {
-
+        $location.path('/');
       }
       else {
-
+        $location.path('/login');
       }
     }
   });
