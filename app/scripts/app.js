@@ -23,7 +23,7 @@ app.config(function($routeProvider, $locationProvider) {
 
 });
 
-app.run(function($rootScope, $location) {
+app.run(function($rootScope, $location, Authentication) {
   $rootScope.$on('$routeChangeStart', function(event, next, current) {
     if (!Authentication.isAuthorized(next.permission)) {
       if (!Authentication.isLoggedIn()) {
