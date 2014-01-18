@@ -1,14 +1,30 @@
 'use strict';
 
-angular.module('angularSimpleApp', []).config(function ($routeProvider, $locationProvider) {
-  $locationProvider.html5Mode(true); // use http://site/routeName instead of http://site/#/routename
+var app = angular.module('angularSimpleApp', [])
+
+app.config(function($routeProvider, $locationProvider) {
+  //$locationProvider.html5Mode(true); // use http://site/routeName instead of http://site/#/routename
   $routeProvider
     .when('/', {
-      templateUrl: 'views/main.html',
+      templateUrl: 'views/my.html',
+      controller: 'MyCtrl'
+    })
+    .when('/my', {
+      templateUrl: 'views/my.html',
+      controller: 'MyCtrl'
+    })
+    .when('/products', {
+      templateUrl: 'views/product.html',
       controller: 'ProductCtrl'
     })
     .otherwise({
       redirectTo: '/'
     });
 
+});
+
+app.run(function($rootScope, $location) {
+  $rootScope.$on('$routeChangeStart', function(event, next, current) {
+    
+  })
 });
