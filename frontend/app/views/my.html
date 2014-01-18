@@ -1,12 +1,32 @@
-<h1>Product Listing</h1>
-<form ng-submit="add(newProduct)">
-  <input type="text" ng-model="newProduct" ng-/>
-  <input type="submit" />
-</form>
-<p ng-show="products.length">You now have {{products.length}} items</p>
-<ul>
-    <li ng-repeat="item in products">
-    	<div>{{item}}</div>
-    	<button ng-click="remove($index)">Remove</button>
-    </li>
-</ul>
+<div class="row">
+	
+	<h1>Product Listing</h1>
+	<div class="col-lg-12">
+		<form class="bs-example bs-example-form" ng-submit="add(newProduct)">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control" ng-model="newProduct">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Save</button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
+    </form>
+
+    <div class="highlight">
+			<!--<form ng-submit="add(newProduct)">
+			  <input type="text" ng-model="newProduct" ng-/>
+			  <input type="submit" />
+			</form>-->
+			<p ng-show="products.length">You now have {{products.length}} items</p>
+			<ul>
+			    <li ng-repeat="item in products">
+			    	<div>{{item}}</div>
+			    	<button ng-click="remove($index)">Remove</button>
+			    </li>
+			</ul>
+		</div>
+	</div>
+</div>
