@@ -1,0 +1,27 @@
+	- rails 
+		(...) /login.json(user, pass)
+		/logout.json()
+
+		/product/create.json
+		/product/delete.json
+
+	- angular
+		login?
+			- interceptor for pages
+			- auth check onRouteChangeStart
+				if (!authorized) {
+					if (logged_in) path('/')
+					else path('/login')
+				}
+
+		productCtrl:
+			$scope.products
+			create(product) {
+				send to product/create.json
+			}
+			delete(product) {
+				send to product/delete.json
+			}
+
+		perks
+			html5mode
