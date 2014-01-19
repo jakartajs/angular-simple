@@ -1,8 +1,6 @@
 'use strict';
 
-var app = angular.module('angularSimpleApp', [])
-
-app.config(function($routeProvider, $locationProvider) {
+app.config(function($routeProvider, $locationProvider, AuthenticationProvider, ServerConfProvider) {
   //$locationProvider.html5Mode(true); // use http://site/routeName instead of http://site/#/routename
   $routeProvider
     .when('/', {
@@ -24,7 +22,8 @@ app.config(function($routeProvider, $locationProvider) {
     .otherwise({
       redirectTo: '/'
     });
-
+    console.log(ServerConfProvider);
+    AuthenticationProvider.setHost(ServerConfProvider.host);
 });
 
 app.run(function($rootScope, $location, Authentication) {

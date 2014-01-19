@@ -1,10 +1,17 @@
 'use strict';
 
-angular.module('angularSimpleApp')
-  .controller('LoginCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+app.controller('LoginCtrl', function ($scope, Authentication) {
+	$scope.login = function() {
+		var loginData = {
+			username: $scope.username,
+			password: $scope.password
+		};
+		function onSuccess(data) {
+
+		}
+		function onFail(data) {
+
+		}
+		Authentication.login(loginData, onSuccess, onFail);
+	}
+});
