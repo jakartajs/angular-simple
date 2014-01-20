@@ -17,14 +17,14 @@ app.provider('Authentication', function () {
         function onFail(data) {
 
         }
-        http.post(host + '/login', loginParam).success(onSuccess).error(onFail);
+        //http.post(host + '/login', loginParam).success(onSuccess).error(onFail);
+        onSuccess();
 	  	}
 	}
 
   // Public API for configuration
   this.setHost = function(url) {
   	host = url;
-    console.log(host);
   }
   
   // Method for instantiating

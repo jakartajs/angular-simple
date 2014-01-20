@@ -24,17 +24,42 @@ class UserSessionsController < ApplicationController
   # POST /user_sessions
   # POST /user_sessions.json
   def create
-    @user_session = UserSession.new(user_session_params)
+    # respond_to do |format|
+    #   if @user_session.save
+    #     format.html { redirect_to @user_session, notice: 'User session was successfully created.' }
+    #     format.json { render action: 'show', status: :created, location: @user_session }
+    #   else
+    #     format.html { render action: 'new' }
+    #     format.json { render json: @user_session.errors, status: :unprocessable_entity }
+    #   end
+    # end
+
+    #binding.pry
+    user = User.get_user(user_session_params[:username], user_session_params[:password])
+    if user != nil
+      session = UserSession.login(user)
+      response = {
+        html: '',
+        json: { username: user.username, token: session.key, status: 200 }
+      }
+    else
+      response = {
+        html: '',
+        json: { status: 400 }
+      }
+    end
 
     respond_to do |format|
-      if @user_session.save
-        format.html { redirect_to @user_session, notice: 'User session was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user_session }
+      if user != nil
+        format.html { render text: response[:html] }
+        format.json { render json: response[:json] }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @user_session.errors, status: :unprocessable_entity }
+        format.html { render text: response[:html] }
+        format.json { render json: response[:json] }
       end
     end
+
+
   end
 
   # PATCH/PUT /user_sessions/1
@@ -69,6 +94,7 @@ class UserSessionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_session_params
-      params[:user_session]
+      # params[:user_session]
+      params
     end
 end
