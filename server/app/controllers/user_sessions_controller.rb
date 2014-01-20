@@ -48,7 +48,6 @@ class UserSessionsController < ApplicationController
         json: { status: 400 }
       }
     end
-
     respond_to do |format|
       if user != nil
         format.html { render text: response[:html] }

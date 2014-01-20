@@ -1,6 +1,8 @@
 Server::Application.routes.draw do
   resources :user_sessions
-    get "login" => "user_sessions#create"
+    post "login" => "user_sessions#create"
+    match '/login', to: 'user_sessions#options', via: :options
+
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,6 +1,6 @@
 'use strict';
 
-app.config(function($routeProvider, $locationProvider, AuthenticationProvider, ServerConfProvider) {
+app.config(function($httpProvider, $routeProvider, $locationProvider, AuthenticationProvider, ServerConfProvider) {
   //$locationProvider.html5Mode(true); // use http://site/routeName instead of http://site/#/routename
   $routeProvider
     .when('/', {
@@ -22,7 +22,7 @@ app.config(function($routeProvider, $locationProvider, AuthenticationProvider, S
     .otherwise({
       redirectTo: '/'
     });
-    console.log(ServerConfProvider);
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
     AuthenticationProvider.setHost(ServerConfProvider.host);
 });
 

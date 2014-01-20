@@ -12,13 +12,12 @@ app.provider('Authentication', function () {
 	  	}
 	  	this.login = function(loginParam, onSuccess, onFail) {
         function onSuccess(data) {
-          // what to do
+          console.log(data);
         }
         function onFail(data) {
 
         }
-        //http.post(host + '/login', loginParam).success(onSuccess).error(onFail);
-        onSuccess();
+        http.post(host + '/login.json', loginParam).success(onSuccess).error(onFail);
 	  	}
 	}
 
