@@ -45,8 +45,13 @@ class UserSessionsController < ApplicationController
     end
     respond_to do |format|
       if user != nil
+        cookies[:key] = {
+          value: response[:json],
+          expires: 1.year.from_now
+         }
         format.html { render text: response[:html] }
         format.json { render json: response[:json] }
+        binding.pry
       else
         format.html {     render text: '', status: :unauthorized }
         format.json {     render text: '', status: :unauthorized }

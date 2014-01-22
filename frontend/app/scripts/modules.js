@@ -1,3 +1,3 @@
 'use strict';
 
-var app = angular.module('angularSimpleApp', []);
+var app = angular.module('angularSimpleApp', ['ngCookies']);
