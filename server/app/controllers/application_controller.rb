@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Allow-Origin'] = request.env['HTTP_ORIGIN']
     headers['Access-Control-Allow-Methods'] = 'POST, PUT, GET, PATCH, DELETE, OPTIONS'
     headers['Access-Control-Max-Age'] = '1000'
-    headers['Access-Control-Allow-Headers'] = '*,x-requested-with,Content-Type'
+    headers['Access-Control-Allow-Headers'] = '*,x-requested-with,Content-Type, x-xsrf-token'
     head :ok
   end
 end

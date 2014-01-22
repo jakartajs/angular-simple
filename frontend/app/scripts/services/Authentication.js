@@ -5,17 +5,18 @@ app.provider('Authentication', function () {
   var host;
 
   // Private constructor
-	function Authentication(http, host) {
+	function Authentication(http, location, host) {
 	  	this.isAuthorized = function(permission) {}
 	  	this.isLoggedIn = function() {
 	  		return false;
 	  	}
 	  	this.login = function(loginParam, onSuccess, onFail) {
         function onSuccess(data) {
-          console.log(data);
+          //location.path('/');
+          console.log('succeed');
         }
         function onFail(data) {
-
+          console.log('fails');
         }
         http.post(host + '/login.json', loginParam).success(onSuccess).error(onFail);
 	  	}
@@ -27,7 +28,7 @@ app.provider('Authentication', function () {
   }
   
   // Method for instantiating
-  this.$get = function($http) {
-  	return new Authentication($http, host);
+  this.$get = function($http, $location) {
+  	return new Authentication($http, $location, host);
   }
 });

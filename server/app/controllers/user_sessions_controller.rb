@@ -42,19 +42,14 @@ class UserSessionsController < ApplicationController
         html: '',
         json: { username: user.username, token: session.key, status: 200 }
       }
-    else
-      response = {
-        html: '',
-        json: { status: 400 }
-      }
     end
     respond_to do |format|
       if user != nil
         format.html { render text: response[:html] }
         format.json { render json: response[:json] }
       else
-        format.html { render text: response[:html] }
-        format.json { render json: response[:json] }
+        format.html {     render text: '', status: :unauthorized }
+        format.json {     render text: '', status: :unauthorized }
       end
     end
 
