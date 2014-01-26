@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('LoginCtrl', function ($scope, Authentication) {
+app.controller('LoginCtrl', function ($scope, $cookies, $cookieStore, Authentication) {
 	$scope.login = function() {
 		var loginData = {
 			username: $scope.username,

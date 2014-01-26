@@ -5,17 +5,14 @@ app.provider('Authentication', function () {
   var host;
 
   // Private constructor
-  function Authentication(http, location, cookieStore, host) {
+  function Authentication(http, location, cookies, cookieStore, host) {
       this.isAuthorized = function(permission) {}
       this.isLoggedIn = function() {
         return false;
       }
       this.login = function(loginParam, onSuccess, onFail) {
         function onSuccess(data) {
-          
-          console.log('succeed');
-          var cookie = cookieStore.get('key');
-          console.log(cookie);
+          cookieStore.put("auth", data);
         }
         function onFail(data) {
           console.log('fails');
@@ -30,7 +27,7 @@ app.provider('Authentication', function () {
   }
   
   // Method for instantiating
-  this.$get = function($http, $location, $cookieStore) {
-    return new Authentication($http, $location, $cookieStore, host);
+  this.$get = function($http, $location, $cookies, $cookieStore) {
+    return new Authentication($http, $location, $cookies, $cookieStore, host);
   }
 });
