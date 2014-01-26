@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularSimpleApp')
-  .controller('NavCtrl', function ($scope, Authentication) {
+  .controller('NavCtrl', function ($location, $scope, Authentication) {
   	$scope.isLogoutBtnVisible = function() {
   		return Authentication.isLoggedIn();
   	}
@@ -10,9 +10,6 @@ angular.module('angularSimpleApp')
 			function onSuccess(data) {
         $location.path('/login');
 			}
-			function onFail(data) {
-
-			}
-			Authentication.logout(onSuccess, onFail);
+			Authentication.logout(onSuccess);
 		}
 	});

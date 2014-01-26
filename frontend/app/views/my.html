@@ -20,7 +20,7 @@
     	<h1 class="heading">Product List</h1>
 			<p ng-show="products.length" class="heading-description">You now have {{products.length}} items</p>
 			<ul>
-			    <li ng-repeat="item in products">
+			    <li ng-repeat="item in products" ng-class="{'last':$last}">
 			    	<div class="row">
 			    		<div class="col-lg-1 list-number">{{$index}}</div>
 			    		<div class="col-lg-9 list-itemname">

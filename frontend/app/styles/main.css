@@ -90,11 +90,9 @@ ul, li {
 	padding: 10px 0;
 }
 
-.product-list ul li:first {
-	border-top: 1px solid #ddd;
+.product-list .last {
+	border:0;
 }
-
-
 .hero-unit {
     margin: 50px auto 0 auto;
     width: 300px;

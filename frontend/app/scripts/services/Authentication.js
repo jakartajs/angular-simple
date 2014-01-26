@@ -16,6 +16,9 @@ app.provider('Authentication', function () {
           return false;
         }
       }
+      this.getUserInfo = function() {
+        return cookieStore.get("auth");
+      }
       this.login = function(loginParam, onSuccessCallback, onFailCallback) {
         function onSuccess(data) {
           cookieStore.put("auth", data);
@@ -26,8 +29,9 @@ app.provider('Authentication', function () {
         }
         http.post(host + '/login.json', loginParam).success(onSuccess).error(onFail);
       }
-      this.logout = function() {
+      this.logout = function(onSuccess) {
         cookieStore.remove("auth");
+        onSuccess();
       }
   }
 
