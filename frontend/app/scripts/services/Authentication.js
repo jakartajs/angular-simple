@@ -16,12 +16,13 @@ app.provider('Authentication', function () {
           return false;
         }
       }
-      this.login = function(loginParam, onSuccess, onFail) {
+      this.login = function(loginParam, onSuccessCallback, onFailCallback) {
         function onSuccess(data) {
           cookieStore.put("auth", data);
+          onSuccessCallback();
         }
         function onFail(data) {
-          console.log('fails');
+          onFailCallback();
         }
         http.post(host + '/login.json', loginParam).success(onSuccess).error(onFail);
       }
