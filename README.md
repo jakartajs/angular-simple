@@ -20,9 +20,10 @@ After you have succesfully installed all four of them, you can proceed by clonin
 
 ### Installing dependencies
 Install all the necessary dependencies:
-`bundle install`
-`rake db:migrate`
-`npm install`
+
+1. `bundle install`
+2. `rake db:migrate`
+3. `npm install`
 
 ### Running
 Finally, run the servers by:
