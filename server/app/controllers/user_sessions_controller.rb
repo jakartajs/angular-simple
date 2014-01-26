@@ -48,7 +48,7 @@ class UserSessionsController < ApplicationController
         cookies[:key] = {
           value: response[:json],
           expires: 1.year.from_now
-         }
+        }
         format.html { render text: response[:html] }
         format.json { render json: response[:json] }
         binding.pry

@@ -23,6 +23,20 @@ app.config(function($httpProvider, $routeProvider, $locationProvider, Authentica
       redirectTo: '/'
     });
     delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.interceptors.push(function($q, $location) {
+        return {
+            'responseError': function(response) {
+                if(response.status === 401 || response.status === 403) {
+                    $location.path('/login');
+                    return $q.reject(response);
+                }
+                else {
+                    return $q.reject(response);
+                }
+            }
+        }
+    });
+
     AuthenticationProvider.setHost(ServerConfProvider.host);
 });
 

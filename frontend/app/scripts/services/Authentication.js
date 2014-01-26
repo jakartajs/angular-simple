@@ -14,7 +14,8 @@ app.provider('Authentication', function () {
         function onSuccess(data) {
           
           console.log('succeed');
-          cookieStore.get('key');
+          var cookie = cookieStore.get('key');
+          console.log(cookie);
         }
         function onFail(data) {
           console.log('fails');
