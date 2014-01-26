@@ -27,7 +27,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-include="'views/navbar.html'"></div>
+    <div ng-include="'views/navbar.html'" ng-controller="NavCtrl"></div>
     <div class="{{message.type}} alert ng-cloak" ng-show="message != undefined" >{{message.text}}</div>
     <div class="container" ng-view=""></div>
 
@@ -77,6 +77,7 @@
         <script src="scripts/controllers/product.js"></script>
         <script src="scripts/controllers/my.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/Nav.js"></script>
         <!-- endbuild -->
 </body>
 </html>

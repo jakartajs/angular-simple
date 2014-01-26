@@ -8,7 +8,13 @@ app.provider('Authentication', function () {
   function Authentication(http, location, cookies, cookieStore, host) {
       this.isAuthorized = function(permission) {}
       this.isLoggedIn = function() {
-        return false;
+        var authToken = cookieStore.get("auth");
+        if (authToken != undefined) {
+          return true;
+        }
+        else {
+          return false;
+        }
       }
       this.login = function(loginParam, onSuccess, onFail) {
         function onSuccess(data) {
@@ -18,6 +24,9 @@ app.provider('Authentication', function () {
           console.log('fails');
         }
         http.post(host + '/login.json', loginParam).success(onSuccess).error(onFail);
+      }
+      this.logout = function() {
+        cookieStore.remove("auth");
       }
   }
 
