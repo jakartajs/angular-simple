@@ -1,0 +1,12 @@
+- show making simple angularjs apps
+	- ecosystem: yeoman, angularjs batarang, angularjs, gitflow
+	- navigation active li
+	- authentication & authorization using 
+		- section that are admin only
+	- sections:
+		- admin panel
+			- delete 
+		- code listing
+			- author name
+			- code
+			- comment

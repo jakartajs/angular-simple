@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-lg-12">
+		<form class="bs-example bs-example-form" ng-submit="add(newProduct)">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control" ng-model="newProduct">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">Save</button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
+    </form>
+  </div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+    <div class="highlight product-list">
+    	<h1 class="heading">Product List</h1>
+			<p ng-show="products.length" class="heading-description">You now have {{products.length}} items</p>
+			<ul>
+			    <li ng-repeat="item in products">
+			    	<div class="row">
+			    		<div class="col-lg-1 list-number">{{$index}}</div>
+			    		<div class="col-lg-9 list-itemname">
+				    		{{item}}
+				    	</div>
+				    	<div class="col-lg-2 list-action">
+				    		<button type="button" class="btn btn-danger" ng-click="remove($index)">Remove</button>
+				    	</div>
+			    	</div>
+			    </li>
+			</ul>
+		</div>
+	</div>
+</div>

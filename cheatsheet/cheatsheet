@@ -1,0 +1,19 @@
+---------------------------------------------------  
+| Type    | Singleton| Instantiable | Configurable|
+---------------------------------------------------  
+| Service | Yes      | No           | No          |
+---------------------------------------------------  
+| Factory | Yes      | Yes          | No          |
+---------------------------------------------------  
+| Provider| Yes      | Yes          | Yes         |       
+--------------------------------------------------- 
+
+
+How to enable CSRF
+- server-side
+	OPTIONS method: app controller.rb
+	routing: match to options
+	app.rb: config?
+
+- client-side
+	$httpProvider remove requested with?
