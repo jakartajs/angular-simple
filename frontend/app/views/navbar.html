@@ -16,7 +16,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/#/my">My Snippets</a></li>
-        <li class="dropdown">
+        <li class="dropdown" ng-show="isLogoutBtnVisible()">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{username}}<b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="#" ng-click="logout()">Logout</a></li>
