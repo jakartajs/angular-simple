@@ -39,16 +39,16 @@ app.config(function($httpProvider, $routeProvider, $locationProvider, Authentica
 
     AuthenticationProvider.setHost(ServerConfProvider.host);
 });
-
+var a;
 app.run(function($rootScope, $location, Authentication) {
-  $rootScope.$on('$routeChangeStart', function(event, next, current) {
-    if (!Authentication.isAuthorized(next.permission)) {
+  $rootScope.$on('$routeChangeStart', function(event, current, next) {
       if (!Authentication.isLoggedIn()) {
         $location.path('/login');
       }
       else {
-        $location.path('/');
+        if (next == undefined) {
+          $location.path('/');
+        }
       }
-    }
   });
 });
